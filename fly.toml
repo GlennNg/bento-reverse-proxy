@@ -1,5 +1,6 @@
 app = "bento-reverse-proxy"
 
+primary_region = "sea"
 [build]
 
 [http_service]
@@ -28,4 +29,4 @@ app = "bento-reverse-proxy"
 [[vm]]
   cpu_kind = "shared"
   cpus = 1
-  memory_mb = 1024
+  memory_mb = 128
