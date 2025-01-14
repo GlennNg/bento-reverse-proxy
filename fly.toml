@@ -4,7 +4,6 @@
 #
 
 app = 'bento-reverse-proxy'
-primary_region = 'fra'
 
 primary_region = "sea"
 [build]
