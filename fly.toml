@@ -1,11 +1,7 @@
-# fly.toml app configuration file generated for bento-reverse-proxy on 2025-01-07T22:11:02Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
-app = 'bento-reverse-proxy'
+app = "bento-reverse-proxy"
 
 primary_region = "sea"
+
 [build]
 
 [http_service]
@@ -14,7 +10,22 @@ primary_region = "sea"
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
+  processes = ["app"]
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
 
 [[vm]]
   cpu_kind = 'shared'
